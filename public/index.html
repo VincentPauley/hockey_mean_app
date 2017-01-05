@@ -8,27 +8,29 @@
   </head>
   <body>
     <h1>Hockey</h1>
-    <form>
-      <h3>Add Team</h3>
-      <label for="">Name</label>
-      <input type="text" name="" value="" id="new-team-name"/><br />
-      <p>{{ 2 + 2 }}</p>
-      <label for="">State</label>
-      <input type="text" name="" value="" id="new-team-state"/><br />
-      <p>{{  }}</p>
-      <label for="">City</label>
-      <input type="text" name="" value="" id="new-team-city"/><br />
-      <p>{{  }}</p>
-      <label for="">League</label>
-      <input type="text" name="" value="" id="new-team-league"/><br />
-      <p>{{  }}</p>
-      <label for="">Stanley Cups</label>
-      <input type="text" name="" value="" id="new-team-stanley-cups"/><br />
-      <p>{{  }}</p>
-      <label for="">Year of Origin</label>
-      <input type="text" name="" value="" id="new-team-origin-year"/><br />
-      <p>{{  }}</p>
-      <input type="submit" value="submit"/>
-    </form>
+    <div ng-controller="createNewTeam as create">
+      <form ng-submit="create.submit_new_team()">
+        <h3>Add Team</h3>
+        <label for="new-team-name">Name</label>
+        <input type="text" ng-model="create.new_team.name" id="new-team-name"/><br />
+
+        <label for="new-team-state">State</label>
+        <input type="text" ng-model="create.new_team.state" id="new-team-state"/><br />
+
+        <label for="new-team-city">City</label>
+        <input type="text" ng-model="create.new_team.city" id="new-team-city"/><br />
+
+        <label for="new-team-league">League</label>
+        <input type="text" ng-model="create.new_team.league" id="new-team-league"/><br />
+
+        <label for="new-team-stanley-cups">Stanley Cups</label>
+        <input type="text" ng-model="create.new_team.cups" id="new-team-stanley-cups"/><br />
+
+        <label for="new-team-origin-year">Year of Origin</label>
+        <input type="text" ng-model="create.new_team.originYear" id="new-team-origin-year"/><br />
+
+        <input type="submit" value="submit" />
+      </form>
+    </div>
   </body>
 </html>
