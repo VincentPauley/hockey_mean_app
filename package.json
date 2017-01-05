@@ -1,0 +1,24 @@
+{
+  "name": "hockey_app",
+  "version": "1.0.0",
+  "description": "allows filtering of hockey teams",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VincentPauley/hockey_mean_app.git"
+  },
+  "author": "Vincent Pauley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VincentPauley/hockey_mean_app/issues"
+  },
+  "homepage": "https://github.com/VincentPauley/hockey_mean_app#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.6"
+  }
+}
