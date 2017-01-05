@@ -14,6 +14,7 @@ app.use(express.static('public'));
 var db = 'mongodb://localhost/hockey';
 mongoose.connect(db);
 
+/*
 var newTeam = new Team();
     newTeam.name = "Blackhawks";
     newTeam.state = "Illinois";
@@ -30,7 +31,7 @@ newTeam.save(function(err, newTeam) {
         console.log(newTeam);
     }
 });
-
+*/
 
 
 
