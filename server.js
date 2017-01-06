@@ -11,14 +11,12 @@ var Team = require('./models/Team.model');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-var db = 'mongodb://localhost/hockey';
-mongoose.connect(db);
+// configure mongoose
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/hockey');
 
-
-
+/* Add Teams */
 app.post('/add-team', function(req, res) {
-    console.log('client requesting to add team');
-
     var newTeam = new Team();
         newTeam.name = req.body.new_team.name;
         newTeam.state = req.body.new_team.state;
@@ -28,15 +26,21 @@ app.post('/add-team', function(req, res) {
         newTeam.originYear = req.body.new_team.originYear;
 
     newTeam.save(function(err, newTeam) {
+        var response = {};
         if(err) {
-            console.error(err);
+            response.status = 'ERROR';
         } else {
-            console.log('SUCCESS');
-            console.log(newTeam);
+            response.status = 'OK';
+            response.message = 'added: ' + newTeam.name + ' to DB';
         }
+        res.send(response);
     });
 });
 
+/* Find Teams */
+app.post('/find-teams', function(req, res) {
+
+});
 
 
 
