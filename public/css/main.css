@@ -1,0 +1,20 @@
+body {
+    font-family: 'Cuprum', sans-serif;
+}
+/* Add Team Styles */
+#add-new-team-block {
+    max-width: 400px;
+    border: 1px solid #CCC;
+    border-radius: 6px;
+    padding: 10px 10px;
+}
+#add-new-team-block::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+#add-new-team-block input[type=submit] {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

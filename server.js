@@ -1,6 +1,8 @@
 var express = require('express'),
+
     mongodb = require('mongodb'),
     mongoose = require('mongoose'),
+
     bodyParser = require('body-parser'),
     app = express(),
     port = 3000;
@@ -14,6 +16,7 @@ app.use(bodyParser.json());
 // configure mongoose
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/hockey');
+
 
 /* Add Teams */
 app.post('/add-team', function(req, res) {
