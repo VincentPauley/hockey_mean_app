@@ -6,35 +6,87 @@
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Cuprum" rel="stylesheet">
+
     <script type="text/javascript" src="js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body>
     <div class="container">
       <h1>Hockey</h1>
+      <!-- Create Team -->
       <div id="add-new-team-block" ng-controller="createNewTeam as create">
         <form ng-submit="create.submit_new_team()">
           <h3>Add Team</h3>
           <label for="new-team-name">Name</label>
-          <input type="text" ng-model="create.new_team.name" class="form-control" id="new-team-name"/>
+          <input type="text" ng-model="create.new_team.name" class="form-control" id="new-team-name" />
 
-          <label for="new-team-state">State</label>
-          <input type="text" ng-model="create.new_team.state" class="form-control" id="new-team-state"/>
-
-          <label for="new-team-city">City</label>
-          <input type="text" ng-model="create.new_team.city" class="form-control" id="new-team-city"/>
+          <!-- Location Input, with toggle capability -->
+          <button type="button" data-toggle="collapse" data-target="#location-inputs">Team Home Location</button><br />
+          <div id="location-inputs" class="collapse">
+            <!-- Country -->
+            <label for="new-team-country">Country</label>
+            <input type="text" ng-model="create.new_team.country" class="form-control" id="new-team-country" />
+            <!-- State/Province -->
+            <label for="new-team-state">State/Province</label>
+            <input type="text" ng-model="create.new_team.state" class="form-control" id="new-team-state" />
+            <!-- City -->
+            <label for="new-team-city">City</label>
+            <input type="text" ng-model="create.new_team.city" class="form-control" id="new-team-city" />
+          </div>
 
           <label for="new-team-league">League</label>
-          <input type="text" ng-model="create.new_team.league" class="form-control" id="new-team-league"/>
+          <input type="text" ng-model="create.new_team.league" class="form-control" id="new-team-league" />
+
+          <label for="new-team-conference">Conference</label>
+          <input type="text" ng-model="create.new_team.conference" class="form-control" id="new-team-conference" />
+
+          <label for="new-team-division">Division</label>
+          <input type="text" ng-model="create.new_team.division" class="form-control" id="new-team-division" />
 
           <label for="new-team-stanley-cups">Stanley Cups</label>
-          <input type="text" ng-model="create.new_team.cups" class="form-control" id="new-team-stanley-cups"/>
+          <input type="text" ng-model="create.new_team.cups" class="form-control" id="new-team-stanley-cups" />
 
           <label for="new-team-origin-year">Year of Origin</label>
-          <input type="text" ng-model="create.new_team.originYear" class="form-control" id="new-team-origin-year"/>
+          <input type="text" ng-model="create.new_team.originYear" class="form-control" id="new-team-origin-year" />
 
-          <input type="submit" value="submit" />
+          <input type="submit" value="Submit" />
         </form>
+      </div>
+
+      <!-- -->
+      <div ng-controller="findTeam as find">
+        <form ng-submit="find.search_for_teams()">
+          <input type="submit" value="Find" />
+        </form>
+        <div id="teams-display">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Team Name</th>
+                <th>Location</th>
+                <th>League</th>
+                <th>Year of Origin</th>
+                <th>Championships</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="team in find.team_data">
+                <td>{{ team.name }}</td>
+                <td>{{ team.city }}, {{ team.state }}</td>
+                <td>{{ team.league }}</td>
+                <td>{{ team.originYear }}</td>
+                <td>{{ team.cups }}</td>
+                <td>
+                  <button ng-click="find.remove_team(team._id)">Delete<!-- <span class="glyphicon glyphicon-remove"></span> --></button>
+                  <button ng-click="find.edit_team(team_id)">Edit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      <div>
       </div>
     </div>
   </body>
